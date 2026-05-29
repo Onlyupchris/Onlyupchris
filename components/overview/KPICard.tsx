@@ -1,16 +1,19 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { TrendingUp, TrendingDown, Minus } from 'lucide-react'
+import { TrendingUp, TrendingDown, Minus, LayoutDashboard, Users, Sparkles, FileText, DollarSign, BarChart3 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import type { LucideIcon } from 'lucide-react'
+
+const ICON_MAP: Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>> = {
+  TrendingUp, TrendingDown, LayoutDashboard, Users, Sparkles, FileText, DollarSign, BarChart3, Minus,
+}
 
 type KPICardProps = {
   title: string
   value: number
   format?: 'currency' | 'number' | 'percent'
   change?: number
-  icon: LucideIcon
+  iconName: string
   iconColor?: string
   prefix?: string
   suffix?: string
@@ -30,8 +33,9 @@ function formatValue(value: number, format?: string, prefix?: string, suffix?: s
 }
 
 export function KPICard({
-  title, value, format, change, icon: Icon, iconColor = '#4DD9D9', prefix, suffix, delay = 0
+  title, value, format, change, iconName, iconColor = '#4DD9D9', prefix, suffix, delay = 0
 }: KPICardProps) {
+  const Icon = ICON_MAP[iconName] ?? Sparkles
   const count = useMotionValue(0)
   const rounded = useTransform(count, v => formatValue(Math.round(v), format, prefix, suffix))
 

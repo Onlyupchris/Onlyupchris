@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { KPICard } from '@/components/overview/KPICard'
-import { LayoutDashboard, TrendingUp, Users, FileText, Sparkles, ArrowRight } from 'lucide-react'
+import { Users, FileText, Sparkles, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { AI_TOOLS } from '@/lib/constants'
 
@@ -49,21 +49,21 @@ export default async function OverviewPage() {
           title="Monthly Recurring Revenue"
           value={totalMRR}
           format="currency"
-          icon={TrendingUp}
+          iconName="TrendingUp"
           iconColor="#4DD9D9"
           delay={0}
         />
         <KPICard
           title="Active Clients"
           value={activeClients}
-          icon={Users}
+          iconName="Users"
           iconColor="#A78BFA"
           delay={0.1}
         />
         <KPICard
           title="Open Deals"
           value={openDeals}
-          icon={LayoutDashboard}
+          iconName="LayoutDashboard"
           iconColor="#F0C040"
           suffix={pipelineValue > 0 ? ` (R${(pipelineValue / 1000).toFixed(0)}K)` : ''}
           delay={0.2}
@@ -72,7 +72,7 @@ export default async function OverviewPage() {
           title="Agency Health Score"
           value={healthScore}
           format="percent"
-          icon={Sparkles}
+          iconName="Sparkles"
           iconColor={healthScore >= 70 ? '#34D399' : healthScore >= 40 ? '#F0C040' : '#F87171'}
           delay={0.3}
         />
