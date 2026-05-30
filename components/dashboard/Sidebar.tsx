@@ -8,8 +8,8 @@ import { RivoniaLogo } from '@/components/brand/RivoniaLogo'
 import { cn } from '@/lib/utils'
 import {
   LayoutDashboard, TrendingUp, Users, FileText, Sparkles,
-  ChevronLeft, ChevronRight, LogOut, Settings, Pen, BarChart3,
-  MessageSquare, ChevronDown, ChevronUp
+  ChevronLeft, ChevronRight, LogOut, Pen, BarChart3,
+  MessageSquare, ChevronDown, ChevronUp, X,
 } from 'lucide-react'
 import type { Profile } from '@/types'
 
@@ -27,7 +27,7 @@ const AI_SUBITEMS = [
   { label: 'Lead Qualifier', href: '/ai-tools/lead-qualifier', icon: MessageSquare },
 ]
 
-export function Sidebar({ profile }: { profile: Profile | null }) {
+export function Sidebar({ profile, onClose }: { profile: Profile | null; onClose?: () => void }) {
   const pathname = usePathname()
   const router = useRouter()
   const supabase = createClient()
@@ -35,6 +35,7 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
   const [aiExpanded, setAiExpanded] = useState(pathname.startsWith('/ai-tools'))
 
   const isAiActive = pathname.startsWith('/ai-tools')
+  const isMobile = !!onClose
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()
@@ -44,14 +45,14 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
 
   return (
     <motion.aside
-      animate={{ width: collapsed ? 64 : 240 }}
+      animate={{ width: collapsed && !isMobile ? 64 : 240 }}
       transition={{ duration: 0.25, ease: 'easeInOut' }}
       className="flex flex-col h-screen bg-[#0D0D0D] border-r border-white/5 overflow-hidden flex-shrink-0"
     >
-      {/* Logo */}
-      <div className="flex items-center px-4 h-16 border-b border-white/5 flex-shrink-0">
+      {/* Logo row */}
+      <div className="flex items-center justify-between px-4 h-14 md:h-16 border-b border-white/5 flex-shrink-0">
         <AnimatePresence mode="wait">
-          {!collapsed ? (
+          {(!collapsed || isMobile) ? (
             <motion.div
               key="full"
               initial={{ opacity: 0 }}
@@ -74,6 +75,16 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Close button on mobile */}
+        {isMobile && (
+          <button
+            onClick={onClose}
+            className="w-8 h-8 flex items-center justify-center text-white/30 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+          >
+            <X size={18} />
+          </button>
+        )}
       </div>
 
       {/* Nav */}
@@ -84,6 +95,7 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group relative',
                 active
@@ -98,7 +110,7 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
                 />
               )}
               <item.icon size={18} className="flex-shrink-0" />
-              {!collapsed && (
+              {(!collapsed || isMobile) && (
                 <span className="text-sm font-light tracking-wide">{item.label}</span>
               )}
             </Link>
@@ -117,7 +129,7 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
             )}
           >
             <Sparkles size={18} className="flex-shrink-0" />
-            {!collapsed && (
+            {(!collapsed || isMobile) && (
               <>
                 <span className="text-sm font-light tracking-wide flex-1 text-left">AI Tools</span>
                 {aiExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
@@ -126,7 +138,7 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
           </button>
 
           <AnimatePresence>
-            {aiExpanded && !collapsed && (
+            {aiExpanded && (!collapsed || isMobile) && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
@@ -140,6 +152,7 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
                     <Link
                       key={item.href}
                       href={item.href}
+                      onClick={onClose}
                       className={cn(
                         'flex items-center gap-2 px-2 py-2 rounded-lg transition-all text-xs',
                         active ? 'text-[#4DD9D9]' : 'text-white/30 hover:text-white/70'
@@ -158,7 +171,7 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
 
       {/* Bottom */}
       <div className="border-t border-white/5 p-3 space-y-1">
-        {!collapsed && profile && (
+        {(!collapsed || isMobile) && profile && (
           <div className="px-3 py-2 mb-2">
             <p className="text-white/70 text-xs font-light truncate">{profile.full_name}</p>
             <p className="text-white/30 text-[10px] truncate">{profile.agency_name || 'Agency'}</p>
@@ -169,14 +182,17 @@ export function Sidebar({ profile }: { profile: Profile | null }) {
           className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/30 hover:text-red-400 hover:bg-red-400/10 transition-all"
         >
           <LogOut size={16} className="flex-shrink-0" />
-          {!collapsed && <span className="text-xs">Sign Out</span>}
+          {(!collapsed || isMobile) && <span className="text-xs">Sign Out</span>}
         </button>
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="w-full flex items-center justify-center px-3 py-2 rounded-xl text-white/20 hover:text-white/50 hover:bg-white/5 transition-all"
-        >
-          {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
-        </button>
+        {/* Collapse toggle — desktop only */}
+        {!isMobile && (
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            className="w-full flex items-center justify-center px-3 py-2 rounded-xl text-white/20 hover:text-white/50 hover:bg-white/5 transition-all"
+          >
+            {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+          </button>
+        )}
       </div>
     </motion.aside>
   )
