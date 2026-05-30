@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peak Performance — Week 3 · Final Countdown</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #060607;
+    --charcoal: #141417;
+    --charcoal-2: #1a1a1f;
+    --gold: #C9A84C;
+    --gold-soft: rgba(201,168,76,0.5);
+    --gold-faint: rgba(201,168,76,0.15);
+    --teal: #2ABFBF;
+    --teal-soft: rgba(42,191,191,0.5);
+    --offwhite: #F0EEE8;
+    --offwhite-mid: rgba(240,238,232,0.55);
+    --offwhite-faint: rgba(240,238,232,0.35);
+    --grey: #3a3a3f;
+  }
+
+  html, body {
+    background: #0a0a0c;
+    font-family: 'Inter', sans-serif;
+    color: var(--offwhite);
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px 80px;
+    gap: 80px;
+  }
+
+  /* ============== HEADERS ============== */
+  .page-header {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .page-header .kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 4px;
+    color: var(--offwhite);
+  }
+
+  .post-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .post-meta {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .post-meta .post-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .post-meta .post-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--offwhite);
+    margin-bottom: 6px;
+  }
+  .post-meta .post-desc {
+    font-size: 11px;
+    color: var(--offwhite-faint);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ============== SLIDES GRID ============== */
+  .slides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 440px);
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .slide {
+    width: 440px;
+    height: 440px;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+    border-radius: 2px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+
+  .slide-tag {
+    position: absolute;
+    top: -28px;
+    left: 0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold-soft);
+    text-transform: uppercase;
+  }
+
+  /* ============== SHARED ELEMENTS ============== */
+  .grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .vignette {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+  }
+  .corner-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 70px; height: 70px;
+    background: linear-gradient(135deg, transparent 50%, rgba(201,168,76,0.12) 50%);
+  }
+
+  /* ============== CAPTION BLOCKS ============== */
+  .caption-block {
+    width: 100%;
+    max-width: 880px;
+    background: var(--charcoal);
+    border-left: 3px solid var(--gold);
+    padding: 32px 36px;
+    margin-top: 8px;
+  }
+  .caption-block .cap-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .caption-block .cap-text {
+    font-size: 13px;
+    line-height: 1.85;
+    color: var(--offwhite-mid);
+    white-space: pre-line;
+  }
+  .caption-block .cap-text strong {
+    color: var(--offwhite);
+    font-weight: 600;
+  }
+
+  /* ===================================================
+     POST A — MON JUN 9
+     "7 DAYS. HERE'S WHAT'S INSIDE PEAK PERFORMANCE."
+     Product Walkthrough Teaser · 6-Slide Carousel
+  =================================================== */
+
+  /* --- Slide A.1 Cover --- */
+  .pa1 { background: var(--black); }
+  .pa1 .teal-glow {
+    position: absolute;
+    width: 400px; height: 400px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(42,191,191,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .pa1 .top-row {
+    position: absolute;
+    top: 32px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .pa1 .brand-tag {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 4px; color: var(--gold); text-transform: uppercase;
+  }
+  .pa1 .pagination { display: flex; gap: 5px; }
+  .pa1 .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+  .pa1 .dot.on { background: var(--teal); }
+  .pa1 .center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 44px;
+  }
+  .pa1 .countdown-box {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 30px;
+  }
+  .pa1 .count-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px; line-height: 1;
+    color: var(--gold); letter-spacing: -2px;
+  }
+  .pa1 .count-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 6px;
+    color: rgba(240,238,232,0.4);
+  }
+  .pa1 .headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 46px; line-height: 0.95;
+    letter-spacing: 1px; color: var(--offwhite);
+    margin-bottom: 20px;
+  }
+  .pa1 .headline em { color: var(--teal); font-style: normal; }
+  .pa1 .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 15px;
+    color: rgba(240,238,232,0.45); letter-spacing: 1px;
+  }
+  .pa1 .bottom {
+    position: absolute;
+    bottom: 32px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .pa1 .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: 4px; color: var(--gold-soft);
+  }
+  .pa1 .swipe-hint {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    color: var(--teal); text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .pa1 .swipe-hint::after { content: '→'; font-size: 12px; }
+
+  /* --- Slides A.2–A.5 Feature Preview --- */
+  .feature-reveal { background: var(--charcoal); }
+  .feature-reveal .gold-bar {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .feature-reveal .feat-num {
+    position: absolute; top: -20px; right: 20px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 200px;
+    color: rgba(255,255,255,0.025); line-height: 1;
+    letter-spacing: -8px; pointer-events: none;
+  }
+  .feature-reveal .inner {
+    position: absolute; inset: 0; padding: 40px;
+    display: flex; flex-direction: column;
+  }
+  .feature-reveal .tag-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+  }
+  .feature-reveal .tag-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 13px;
+    letter-spacing: 4px; color: var(--gold);
+  }
+  .feature-reveal .tag-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent); opacity: 0.4;
+  }
+  .feature-reveal .feat-icon {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,168,76,0.35);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .feature-reveal .feat-icon-char {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; color: var(--gold);
+  }
+  .feature-reveal .feat-name {
+    font-size: 9px; font-weight: 700; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+  }
+  .feature-reveal .feat-headline {
+    font-family: 'Bebas Neue', sans-serif; font-size: 50px;
+    line-height: 0.95; color: var(--offwhite); letter-spacing: 1px; margin-bottom: 18px;
+  }
+  .feature-reveal .feat-headline em { color: var(--gold); font-style: normal; }
+  .feature-reveal .feat-desc {
+    font-size: 13px; color: rgba(240,238,232,0.55); line-height: 1.75;
+    max-width: 340px; margin-bottom: auto;
+  }
+  .feature-reveal .feat-bullets {
+    display: flex; flex-direction: column; gap: 6px; margin-top: 18px;
+  }
+  .feature-reveal .feat-bullet {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; color: rgba(240,238,232,0.6); letter-spacing: 0.5px;
+  }
+  .feature-reveal .feat-bullet::before {
+    content: ''; display: block;
+    width: 4px; height: 4px;
+    border-radius: 50%; background: var(--teal); flex-shrink: 0;
+  }
+  .feature-reveal .feat-footer {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--teal-soft);
+    border-top: 1px solid rgba(42,191,191,0.2); padding-top: 14px; margin-top: 14px;
+  }
+
+  /* --- Slide A.6 CTA --- */
+  .pa6 { background: var(--black); }
+  .pa6 .teal-corner {
+    position: absolute; top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle at top right, rgba(42,191,191,0.12) 0%, transparent 65%);
+  }
+  .pa6 .gold-corner {
+    position: absolute; bottom: 0; left: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle at bottom left, rgba(201,168,76,0.10) 0%, transparent 65%);
+  }
+  .pa6 .inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 44px;
+  }
+  .pa6 .launch-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 18px;
+  }
+  .pa6 .cta-frame {
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 32px 40px; margin-bottom: 28px;
+  }
+  .pa6 .cta-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px; line-height: 0.95;
+    letter-spacing: 2px; color: var(--offwhite); margin-bottom: 6px;
+  }
+  .pa6 .cta-date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; letter-spacing: 4px; color: var(--gold);
+  }
+  .pa6 .cta-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px;
+    color: rgba(240,238,232,0.45); margin-bottom: 22px;
+    letter-spacing: 0.5px;
+  }
+  .pa6 .cta-btn {
+    background: var(--gold); color: var(--black);
+    font-size: 10px; font-weight: 800; letter-spacing: 4px;
+    text-transform: uppercase; padding: 13px 28px; margin-bottom: 12px;
+    display: inline-block;
+  }
+  .pa6 .cta-alt {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    color: var(--teal); text-transform: uppercase;
+  }
+
+  /* ===================================================
+     POST B — WED JUN 11
+     LIFESTYLE IQ × PEAK PERFORMANCE — Partnership Announcement
+     Single Static Graphic
+  =================================================== */
+
+  .pb1 { background: var(--black); }
+  .pb1 .teal-glow-left {
+    position: absolute; top: 50%; left: 0;
+    transform: translateY(-50%);
+    width: 250px; height: 300px;
+    background: radial-gradient(ellipse at left center, rgba(42,191,191,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .pb1 .gold-glow-right {
+    position: absolute; top: 50%; right: 0;
+    transform: translateY(-50%);
+    width: 250px; height: 300px;
+    background: radial-gradient(ellipse at right center, rgba(201,168,76,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .pb1 .top-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, var(--teal) 0%, var(--gold) 100%);
+  }
+  .pb1 .top-row {
+    position: absolute; top: 28px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .pb1 .brand-tag {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 4px; color: var(--gold); text-transform: uppercase;
+  }
+  .pb1 .ann-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    color: var(--teal); text-transform: uppercase;
+    border: 1px solid rgba(42,191,191,0.4); padding: 4px 10px;
+  }
+  .pb1 .center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 40px;
+  }
+  .pb1 .collab-row {
+    display: flex; align-items: center; gap: 18px; margin-bottom: 28px;
+  }
+  .pb1 .partner-badge {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .pb1 .partner-icon {
+    width: 52px; height: 52px;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 4px;
+  }
+  .pb1 .partner-icon-char {
+    font-family: 'Bebas Neue', sans-serif; font-size: 24px;
+  }
+  .pb1 .partner-icon.teal-icon { border-color: rgba(42,191,191,0.4); }
+  .pb1 .partner-icon.teal-icon .partner-icon-char { color: var(--teal); }
+  .pb1 .partner-icon.gold-icon { border-color: rgba(201,168,76,0.4); }
+  .pb1 .partner-icon.gold-icon .partner-icon-char { color: var(--gold); }
+  .pb1 .partner-name {
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+    letter-spacing: 3px; color: var(--offwhite-mid);
+  }
+  .pb1 .cross-sym {
+    font-family: 'Bebas Neue', sans-serif; font-size: 28px;
+    color: rgba(240,238,232,0.2); padding: 0 4px;
+    align-self: center;
+  }
+  .pb1 .headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px; line-height: 0.95;
+    letter-spacing: 1px; color: var(--offwhite); margin-bottom: 16px;
+  }
+  .pb1 .headline em { color: var(--teal); font-style: normal; }
+  .pb1 .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 15px;
+    color: rgba(240,238,232,0.45); letter-spacing: 0.5px;
+    max-width: 320px; margin: 0 auto 26px;
+    line-height: 1.6;
+  }
+  .pb1 .detail-row {
+    display: flex; gap: 20px; align-items: center; justify-content: center;
+  }
+  .pb1 .detail-item {
+    text-align: center;
+  }
+  .pb1 .detail-val {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 2px; color: var(--gold); margin-bottom: 2px;
+  }
+  .pb1 .detail-lbl {
+    font-size: 8px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: rgba(240,238,232,0.3);
+  }
+  .pb1 .detail-sep {
+    width: 1px; height: 30px; background: rgba(255,255,255,0.08);
+  }
+  .pb1 .bottom-row {
+    position: absolute; bottom: 28px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .pb1 .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; letter-spacing: 4px; color: var(--gold-soft);
+  }
+  .pb1 .date-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    color: var(--teal); text-transform: uppercase;
+    border: 1px solid rgba(42,191,191,0.4); padding: 4px 10px;
+  }
+
+  /* ===================================================
+     POST C — FRI JUN 13
+     "TOMORROW IS THE DAY." — Pre-Launch Final Push
+     Single Static Graphic
+  =================================================== */
+
+  .pc1 { background: var(--black); }
+  .pc1 .radial-gold {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.13) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .pc1 .top-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(to right, transparent 0%, var(--gold) 50%, transparent 100%);
+  }
+  .pc1 .top-row {
+    position: absolute; top: 28px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .pc1 .brand-tag {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 4px; color: var(--gold); text-transform: uppercase;
+  }
+  .pc1 .live-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--black);
+    background: var(--gold); padding: 4px 10px;
+  }
+  .pc1 .center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 44px;
+  }
+  .pc1 .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 6px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 20px;
+  }
+  .pc1 .big-tomorrow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 82px; line-height: 0.9;
+    letter-spacing: 2px; color: var(--offwhite);
+    margin-bottom: 8px;
+  }
+  .pc1 .sub-line {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; letter-spacing: 3px;
+    color: var(--gold); margin-bottom: 28px;
+  }
+  .pc1 .italic-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 16px;
+    color: rgba(240,238,232,0.45); letter-spacing: 0.5px;
+    margin-bottom: 32px; max-width: 300px; line-height: 1.6;
+  }
+  .pc1 .bracket-row {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .pc1 .bracket-line {
+    width: 40px; height: 1px; background: rgba(201,168,76,0.4);
+  }
+  .pc1 .bracket-text {
+    font-size: 10px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .pc1 .bracket-cta {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    color: var(--teal); text-transform: uppercase; margin-top: 12px;
+  }
+  .pc1 .corner-tl {
+    position: absolute; top: 52px; left: 22px;
+    width: 18px; height: 18px;
+    border-top: 1px solid rgba(201,168,76,0.5);
+    border-left: 1px solid rgba(201,168,76,0.5);
+  }
+  .pc1 .corner-br {
+    position: absolute; bottom: 52px; right: 22px;
+    width: 18px; height: 18px;
+    border-bottom: 1px solid rgba(201,168,76,0.5);
+    border-right: 1px solid rgba(201,168,76,0.5);
+  }
+  .pc1 .bottom-row {
+    position: absolute; bottom: 28px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .pc1 .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; letter-spacing: 4px; color: var(--gold-soft);
+  }
+  .pc1 .date-chip {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--teal);
+    border: 1px solid rgba(42,191,191,0.4); padding: 4px 10px;
+  }
+
+  /* ===================================================
+     SECTION DIVIDER
+  =================================================== */
+  .section-divider {
+    width: 100%; max-width: 880px;
+    display: flex; align-items: center; gap: 20px;
+    margin: 8px 0;
+  }
+  .section-divider .div-line {
+    flex: 1; height: 1px; background: rgba(201,168,76,0.2);
+  }
+  .section-divider .div-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase; color: rgba(201,168,76,0.4);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="kicker">Phase 3 · Jun 8–14, 2026</div>
+  <h1>FINAL COUNTDOWN</h1>
+</div>
+
+<!-- =========================================
+     POST A — MON JUN 9
+     "7 DAYS. HERE'S WHAT'S INSIDE PEAK PERFORMANCE."
+     Product Walkthrough Teaser · 6-Slide Carousel
+========================================= -->
+
+<div class="post-section">
+  <div class="post-meta">
+    <div class="post-num">Post A · Mon Jun 9</div>
+    <div class="post-title">7 DAYS. HERE'S WHAT'S INSIDE PEAK PERFORMANCE.</div>
+    <div class="post-desc">Product Walkthrough Teaser · 6-Slide Carousel</div>
+  </div>
+
+  <div class="slides-grid">
+
+    <!-- Slide A.1 — Cover / Countdown -->
+    <div class="slide pa1">
+      <div class="teal-glow"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="top-row">
+        <span class="brand-tag">Peak Performance</span>
+        <div class="pagination">
+          <div class="dot on"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+      <div class="center">
+        <div class="countdown-box">
+          <span class="count-num">7</span>
+          <span class="count-label">DAYS</span>
+        </div>
+        <div class="headline">HERE'S WHAT'S<br>INSIDE <em>PEAK</em></div>
+        <div class="sub">A full product tour — before the world sees it</div>
+      </div>
+      <div class="bottom">
+        <span class="logo-text">PEAK PERFORMANCE</span>
+        <span class="swipe-hint">Swipe to explore</span>
+      </div>
+      <div class="slide-tag">Slide 1 of 6</div>
+    </div>
+
+    <!-- Slide A.2 — Feature 1: Command Centre -->
+    <div class="slide feature-reveal">
+      <div class="gold-bar"></div>
+      <div class="feat-num">01</div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="inner">
+        <div class="tag-row">
+          <span class="tag-num">01 / 04</span>
+          <div class="tag-line"></div>
+        </div>
+        <div class="feat-icon"><span class="feat-icon-char">⌘</span></div>
+        <div class="feat-name">Command Centre</div>
+        <div class="feat-headline">YOUR ENTIRE<br>BUSINESS<br><em>ONE SCREEN</em></div>
+        <div class="feat-desc">Every client, every session, every payment — visible at a glance. No more toggling between apps to find where you left off.</div>
+        <div class="feat-bullets">
+          <div class="feat-bullet">Live client activity feed</div>
+          <div class="feat-bullet">Today's sessions at a glance</div>
+          <div class="feat-bullet">Overdue check-ins flagged automatically</div>
+        </div>
+        <div class="feat-footer">Peak Performance · Launching Jun 15</div>
+      </div>
+      <div class="slide-tag">Slide 2 of 6</div>
+    </div>
+
+    <!-- Slide A.3 — Feature 2: Smart Client Management -->
+    <div class="slide feature-reveal">
+      <div class="gold-bar"></div>
+      <div class="feat-num">02</div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="inner">
+        <div class="tag-row">
+          <span class="tag-num">02 / 04</span>
+          <div class="tag-line"></div>
+        </div>
+        <div class="feat-icon"><span class="feat-icon-char">◈</span></div>
+        <div class="feat-name">Client Management</div>
+        <div class="feat-headline">EVERY CLIENT<br>TRACKED.<br><em>NOTHING MISSED.</em></div>
+        <div class="feat-desc">Full client profiles — goals, progress photos, body metrics, session notes, and messaging history. All in one place, always up to date.</div>
+        <div class="feat-bullets">
+          <div class="feat-bullet">Automated 30-day check-in reminders</div>
+          <div class="feat-bullet">Progress photo comparisons</div>
+          <div class="feat-bullet">Goal tracking with milestones</div>
+        </div>
+        <div class="feat-footer">Peak Performance · Launching Jun 15</div>
+      </div>
+      <div class="slide-tag">Slide 3 of 6</div>
+    </div>
+
+    <!-- Slide A.4 — Feature 3: Workout Delivery -->
+    <div class="slide feature-reveal">
+      <div class="gold-bar"></div>
+      <div class="feat-num">03</div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="inner">
+        <div class="tag-row">
+          <span class="tag-num">03 / 04</span>
+          <div class="tag-line"></div>
+        </div>
+        <div class="feat-icon"><span class="feat-icon-char">◎</span></div>
+        <div class="feat-name">Workout Delivery</div>
+        <div class="feat-headline">PROGRAMMES<br>YOUR CLIENTS<br><em>ACTUALLY FOLLOW</em></div>
+        <div class="feat-desc">Build and send fully structured programmes with video links, sets, reps, and rest guidance. Clients complete workouts in-app and log results automatically.</div>
+        <div class="feat-bullets">
+          <div class="feat-bullet">Drag-and-drop programme builder</div>
+          <div class="feat-bullet">In-app workout logging</div>
+          <div class="feat-bullet">Automatic progress reporting</div>
+        </div>
+        <div class="feat-footer">Peak Performance · Launching Jun 15</div>
+      </div>
+      <div class="slide-tag">Slide 4 of 6</div>
+    </div>
+
+    <!-- Slide A.5 — Feature 4: Payments & Contracts -->
+    <div class="slide feature-reveal">
+      <div class="gold-bar"></div>
+      <div class="feat-num">04</div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="inner">
+        <div class="tag-row">
+          <span class="tag-num">04 / 04</span>
+          <div class="tag-line"></div>
+        </div>
+        <div class="feat-icon"><span class="feat-icon-char">◉</span></div>
+        <div class="feat-name">Payments & Contracts</div>
+        <div class="feat-headline">GET PAID.<br>ON TIME.<br><em>EVERY TIME.</em></div>
+        <div class="feat-desc">Send invoices, collect recurring payments, and store signed contracts in one click. No more chasing clients across WhatsApp threads to confirm payment.</div>
+        <div class="feat-bullets">
+          <div class="feat-bullet">Recurring billing automation</div>
+          <div class="feat-bullet">Digital contract signing</div>
+          <div class="feat-bullet">UAE payment gateway ready</div>
+        </div>
+        <div class="feat-footer">Peak Performance · Launching Jun 15</div>
+      </div>
+      <div class="slide-tag">Slide 5 of 6</div>
+    </div>
+
+    <!-- Slide A.6 — CTA -->
+    <div class="slide pa6">
+      <div class="teal-corner"></div>
+      <div class="gold-corner"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="inner">
+        <div class="launch-label">7 Days to Go</div>
+        <div class="cta-frame">
+          <div class="cta-headline">ONE PLATFORM</div>
+          <div class="cta-date">JUNE 15, 2026</div>
+        </div>
+        <div class="cta-sub">The waitlist is still open. Join 200+ UAE coaches already signed up.</div>
+        <div class="cta-btn">Join the Waitlist</div>
+        <div class="cta-alt">Comment DEMO for a private walkthrough</div>
+      </div>
+      <div class="slide-tag">Slide 6 of 6</div>
+    </div>
+
+  </div>
+
+  <!-- Caption A -->
+  <div class="caption-block">
+    <div class="cap-label">Instagram Caption — Post A · Mon Jun 9</div>
+    <div class="cap-text"><strong>7 days.</strong>
+
+We've been quiet about what's actually inside the platform.
+
+Not anymore.
+
+Swipe through — you'll see exactly what gets unlocked on June 15.
+
+Command Centre. Client Management. Workout Delivery. Payments. All of it, purpose-built for UAE coaches.
+
+No more switching between 6 apps.
+No more lost client data.
+No more chasing payments on WhatsApp.
+
+One platform. Every client. Zero chaos.
+
+<strong>Drop a DEMO below and I'll personally walk you through it before launch. 👇</strong>
+
+—
+
+#PeakPerformance #UAEFitness #PersonalTrainer #FitnessCoach #CoachingApp #PTDubai #FitnessTech #DubaiPersonalTrainer #CoachingBusiness #FitnessCoaching</div>
+  </div>
+
+  <div class="caption-block">
+    <div class="cap-label">Ron's LinkedIn Post — Post A · Mon Jun 9</div>
+    <div class="cap-text"><strong>7 days until launch. Here's what we actually built.</strong>
+
+For 18 months, my co-founder Nicole and I kept talking to coaches.
+
+Not investors. Not advisors. Coaches.
+
+We asked one question over and over: "What would you delete from your week if you could?"
+
+The answer was always some version of: admin. Chasing payments. Re-explaining programmes. Not knowing which clients were about to quit.
+
+So we built the opposite of that.
+
+Swipe through the carousel → it's the first time I've shown all four core features in one place.
+
+What we built isn't complicated. It's just everything a UAE coach needs — and nothing they don't.
+
+<strong>June 15. We're almost there.</strong>
+
+If you want a personal walkthrough before we go public — comment DEMO. I'll set something up.
+
+#PeakPerformance #FitnessCoaching #CoachingTech #UAEFitness #FitnessStartup #Entrepreneurship #DubaiBusiness</div>
+  </div>
+</div>
+
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="div-line"></div>
+  <div class="div-label">Post B · Wed Jun 11</div>
+  <div class="div-line"></div>
+</div>
+
+
+<!-- =========================================
+     POST B — WED JUN 11
+     LIFESTYLE IQ × PEAK PERFORMANCE
+     Partnership Announcement · Single Static
+========================================= -->
+
+<div class="post-section">
+  <div class="post-meta">
+    <div class="post-num">Post B · Wed Jun 11</div>
+    <div class="post-title">LIFESTYLE IQ × PEAK PERFORMANCE</div>
+    <div class="post-desc">Partnership Announcement · Single Static Graphic</div>
+  </div>
+
+  <div class="slides-grid">
+
+    <!-- Slide B.1 — Partnership Graphic -->
+    <div class="slide pb1">
+      <div class="teal-glow-left"></div>
+      <div class="gold-glow-right"></div>
+      <div class="top-bar"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="top-row">
+        <span class="brand-tag">Peak Performance</span>
+        <span class="ann-tag">Partnership</span>
+      </div>
+      <div class="center">
+        <div class="collab-row">
+          <div class="partner-badge">
+            <div class="partner-icon teal-icon">
+              <span class="partner-icon-char">LQ</span>
+            </div>
+            <span class="partner-name">LIFESTYLE IQ</span>
+          </div>
+          <span class="cross-sym">×</span>
+          <div class="partner-badge">
+            <div class="partner-icon gold-icon">
+              <span class="partner-icon-char">PP</span>
+            </div>
+            <span class="partner-name">PEAK PERFORMANCE</span>
+          </div>
+        </div>
+        <div class="headline">UAE'S LEADING<br>ACADEMY MEETS <em>THE FUTURE</em><br>OF COACHING</div>
+        <div class="sub">Lifestyle IQ graduates get exclusive first-year access to Peak Performance — starting June 15.</div>
+        <div class="detail-row">
+          <div class="detail-item">
+            <div class="detail-val">500+</div>
+            <div class="detail-lbl">Certified Coaches</div>
+          </div>
+          <div class="detail-sep"></div>
+          <div class="detail-item">
+            <div class="detail-val">Dubai</div>
+            <div class="detail-lbl">UAE Based</div>
+          </div>
+          <div class="detail-sep"></div>
+          <div class="detail-item">
+            <div class="detail-val">Jun 15</div>
+            <div class="detail-lbl">Go Live</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-row">
+        <span class="logo-text">PEAK PERFORMANCE</span>
+        <span class="date-tag">Jun 15, 2026</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Caption B -->
+  <div class="caption-block">
+    <div class="cap-label">Instagram Caption — Post B · Wed Jun 11</div>
+    <div class="cap-text"><strong>Two UAE institutions. One shared mission.</strong>
+
+We're proud to announce our first official academy partnership — Lifestyle IQ × Peak Performance.
+
+If you've trained with Lifestyle IQ or earned your certification through them — you're getting first-access benefits when we launch on June 15.
+
+More details landing in your inbox shortly.
+
+This is just the beginning of how we're building the strongest coaching ecosystem in the UAE.
+
+<strong>Tag a Lifestyle IQ grad who needs to see this. 👇</strong>
+
+—
+
+#PeakPerformance #LifestyleIQ #UAEFitness #DubaiPersonalTrainer #FitnessAcademy #PersonalTrainer #CoachingApp #PTDubai #FitnessCertification #DubaiFitness</div>
+  </div>
+
+  <div class="caption-block">
+    <div class="cap-label">Ron's LinkedIn Post — Post B · Wed Jun 11</div>
+    <div class="cap-text"><strong>We just signed our first academy partnership — and I couldn't be more proud.</strong>
+
+Lifestyle IQ has certified some of the best coaches in the UAE.
+
+Their standards are exceptionally high. The coaches they produce are serious, professional, and committed to doing this the right way.
+
+So it felt right that our first formal partnership would be with them.
+
+Starting June 15, Lifestyle IQ graduates get a dedicated onboarding track and first-year benefits on Peak Performance.
+
+More than a referral deal — a shared belief that UAE coaches deserve better tools.
+
+If you know a Lifestyle IQ graduate, share this with them. Their platform is almost here.
+
+<strong>We go live in 4 days.</strong>
+
+#PeakPerformance #LifestyleIQ #Partnerships #UAEFitness #FitnessCoaching #DubaiStartup #CoachingTech</div>
+  </div>
+</div>
+
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="div-line"></div>
+  <div class="div-label">Post C · Fri Jun 13</div>
+  <div class="div-line"></div>
+</div>
+
+
+<!-- =========================================
+     POST C — FRI JUN 13
+     "TOMORROW IS THE DAY." — Final Push
+     Single Static Graphic
+========================================= -->
+
+<div class="post-section">
+  <div class="post-meta">
+    <div class="post-num">Post C · Fri Jun 13</div>
+    <div class="post-title">TOMORROW IS THE DAY.</div>
+    <div class="post-desc">Pre-Launch Final Push · Single Static Graphic</div>
+  </div>
+
+  <div class="slides-grid">
+
+    <!-- Slide C.1 — Tomorrow Is The Day -->
+    <div class="slide pc1">
+      <div class="radial-gold"></div>
+      <div class="top-bar"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="corner-tl"></div>
+      <div class="corner-br"></div>
+      <div class="top-row">
+        <span class="brand-tag">Peak Performance</span>
+        <span class="live-tag">Jun 15 · LIVE</span>
+      </div>
+      <div class="center">
+        <div class="eyebrow">June 13 · 2 Days to Go</div>
+        <div class="big-tomorrow">TOMORROW</div>
+        <div class="sub-line">IS THE DAY.</div>
+        <div class="italic-line">18 months of building. A lifetime of coaching experience. One platform.</div>
+        <div class="bracket-row">
+          <div class="bracket-line"></div>
+          <span class="bracket-text">PEAK PERFORMANCE</span>
+          <div class="bracket-line"></div>
+        </div>
+        <div class="bracket-cta">Comment COACH for early access</div>
+      </div>
+      <div class="bottom-row">
+        <span class="logo-text">PEAK PERFORMANCE</span>
+        <span class="date-chip">Jun 15, 2026</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Caption C -->
+  <div class="caption-block">
+    <div class="cap-label">Instagram Caption — Post C · Fri Jun 13</div>
+    <div class="cap-text"><strong>Tomorrow is the day.</strong>
+
+18 months of building.
+Hundreds of conversations with UAE coaches.
+Thousands of hours of design, development, and refinement.
+
+June 15, Peak Performance goes live.
+
+If you've been watching — now is the time.
+
+The waitlist closes tonight.
+Early adopters get 30 days free, locked-in founding rates, and personal onboarding from the founders.
+
+<strong>Comment COACH below. We'll send you the link the moment we go live. 🔒</strong>
+
+See you on the other side.
+
+— Ron & Nicole
+
+—
+
+#PeakPerformance #TomorrowIsTheDay #UAEFitness #DubaiPersonalTrainer #FitnessCoach #CoachingApp #LaunchDay #PTDubai #FitnessTech #UAE</div>
+  </div>
+
+  <div class="caption-block">
+    <div class="cap-label">Ron's LinkedIn Post — Post C · Fri Jun 13</div>
+    <div class="cap-text"><strong>Tomorrow, we launch.</strong>
+
+I started writing a long post about what this journey has meant.
+
+Then I deleted it.
+
+Because what matters now isn't the story. It's what happens next — for every UAE coach who's been doing this the hard way.
+
+If you're a personal trainer or fitness coach in the UAE, and you've spent years managing clients across WhatsApp, spreadsheets, and 5 different apps — tomorrow changes that.
+
+Peak Performance goes live June 15.
+
+One platform built specifically for coaches like you.
+
+If you want founding member access — with 30 days free and direct support from us — <strong>comment COACH</strong> and I'll personally make sure you're set up on day one.
+
+See you tomorrow.
+
+— Ron
+
+#PeakPerformance #UAE #FitnessCoaching #Entrepreneurship #DubaiStartup #LaunchDay #CoachingTech #PersonalTrainer</div>
+  </div>
+</div>
+
+
+</body>
+</html>

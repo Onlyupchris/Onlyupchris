@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peak Performance — Week 2 · Countdown Campaign</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #060607;
+    --charcoal: #141417;
+    --charcoal-2: #1a1a1f;
+    --gold: #C9A84C;
+    --gold-soft: rgba(201,168,76,0.5);
+    --gold-faint: rgba(201,168,76,0.15);
+    --teal: #2ABFBF;
+    --teal-soft: rgba(42,191,191,0.5);
+    --offwhite: #F0EEE8;
+    --offwhite-mid: rgba(240,238,232,0.55);
+    --offwhite-faint: rgba(240,238,232,0.35);
+    --grey: #3a3a3f;
+  }
+
+  html, body {
+    background: #0a0a0c;
+    font-family: 'Inter', sans-serif;
+    color: var(--offwhite);
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px 80px;
+    gap: 80px;
+  }
+
+  /* ============== HEADERS ============== */
+  .page-header {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .page-header .kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 4px;
+    color: var(--offwhite);
+  }
+
+  .post-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .post-meta {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .post-meta .post-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .post-meta .post-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--offwhite);
+    margin-bottom: 6px;
+  }
+  .post-meta .post-desc {
+    font-size: 11px;
+    color: var(--offwhite-faint);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ============== SLIDES GRID ============== */
+  .slides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 440px);
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .slide {
+    width: 440px;
+    height: 440px;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+    border-radius: 2px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+
+  .slide-tag {
+    position: absolute;
+    top: -28px;
+    left: 0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold-soft);
+    text-transform: uppercase;
+  }
+
+  /* ============== SHARED ELEMENTS ============== */
+  .grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .vignette {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+  }
+  .corner-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 70px; height: 70px;
+    background: linear-gradient(135deg, transparent 50%, rgba(201,168,76,0.12) 50%);
+  }
+
+  /* ===================================================
+     POST A — MON JUN 2
+     "ONE DASHBOARD. EVERY CLIENT. ZERO CHAOS."
+     Feature Reveal #1 · 8-Slide Carousel
+  =================================================== */
+
+  /* --- Slide A.1 Cover --- */
+  .sa1 { background: var(--black); }
+  .sa1 .gold-glow {
+    position: absolute;
+    width: 380px; height: 380px;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .sa1 .top-row {
+    position: absolute;
+    top: 32px; left: 32px; right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sa1 .brand-tag {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 4px; color: var(--gold); text-transform: uppercase;
+  }
+  .sa1 .pagination { display: flex; gap: 5px; }
+  .sa1 .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+  .sa1 .dot.on { background: var(--gold); }
+  .sa1 .center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 40px;
+  }
+  .sa1 .eyebrow {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 6px; color: var(--teal);
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+  .sa1 .headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px; line-height: 0.92;
+    letter-spacing: 2px; color: var(--offwhite);
+  }
+  .sa1 .headline .gold-word { color: var(--gold); display: block; }
+  .sa1 .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 15px;
+    color: rgba(240,238,232,0.5);
+    margin-top: 26px; letter-spacing: 1px;
+  }
+  .sa1 .bottom {
+    position: absolute;
+    bottom: 32px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .sa1 .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: 4px; color: var(--gold-soft);
+  }
+  .sa1 .date-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    color: var(--teal); text-transform: uppercase;
+    border: 1px solid rgba(42,191,191,0.4); padding: 5px 10px;
+  }
+
+  /* --- Slide A.2 Problem Setup --- */
+  .sa2 { background: var(--charcoal); }
+  .sa2 .huge-num {
+    position: absolute; top: 10px; left: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px; color: rgba(201,168,76,0.05);
+    line-height: 1; pointer-events: none;
+  }
+  .sa2 .content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 40px 40px 44px;
+  }
+  .sa2 .tag-line {
+    font-size: 9px; font-weight: 700; letter-spacing: 4px;
+    color: var(--teal); text-transform: uppercase;
+    margin-bottom: 18px; display: flex; align-items: center; gap: 12px;
+  }
+  .sa2 .tag-line::before {
+    content: ''; display: block; width: 24px; height: 1px; background: var(--teal);
+  }
+  .sa2 .headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px; line-height: 0.95;
+    color: var(--offwhite); letter-spacing: 1px; margin-bottom: 20px;
+  }
+  .sa2 .headline em { color: var(--gold); font-style: normal; }
+  .sa2 .apps {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;
+  }
+  .sa2 .app-pill {
+    font-size: 9px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; padding: 4px 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(240,238,232,0.4);
+  }
+  .sa2 .app-pill.strike {
+    text-decoration: line-through;
+    border-color: rgba(201,168,76,0.2);
+    color: rgba(201,168,76,0.4);
+  }
+  .sa2 .end-line {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 14px; color: rgba(240,238,232,0.5); letter-spacing: 1px;
+  }
+
+  /* --- Slide A.3–A.6 Feature Slides --- */
+  .feature-slide { background: var(--black); }
+  .feature-slide .teal-bar {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--teal), transparent);
+  }
+  .feature-slide .feature-icon {
+    position: absolute; top: 36px; right: 36px;
+    width: 48px; height: 48px;
+    border: 1px solid rgba(42,191,191,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .feature-slide .icon-char {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; color: var(--teal);
+  }
+  .feature-slide .big-number {
+    position: absolute; top: -20px; right: 20px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 220px;
+    color: rgba(255,255,255,0.025); line-height: 1;
+    letter-spacing: -8px; pointer-events: none;
+  }
+  .feature-slide .inner {
+    position: absolute; inset: 0; padding: 40px;
+    display: flex; flex-direction: column;
+  }
+  .feature-slide .num-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 32px;
+  }
+  .feature-slide .num-text {
+    font-family: 'Bebas Neue', sans-serif; font-size: 13px;
+    letter-spacing: 4px; color: var(--gold);
+  }
+  .feature-slide .num-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent); opacity: 0.5;
+  }
+  .feature-slide .headline {
+    font-family: 'Bebas Neue', sans-serif; font-size: 54px;
+    line-height: 0.95; color: var(--offwhite); letter-spacing: 1px; margin-bottom: 22px;
+  }
+  .feature-slide .headline em { color: var(--gold); font-style: normal; }
+  .feature-slide .body {
+    font-size: 13px; color: rgba(240,238,232,0.55); line-height: 1.75;
+    margin-top: auto; margin-bottom: 16px; max-width: 340px;
+  }
+  .feature-slide .tag-bottom {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--teal);
+    border-top: 1px solid rgba(42,191,191,0.25); padding-top: 14px;
+  }
+
+  /* --- Slide A.7 Analytics --- */
+  .sa7 { background: var(--charcoal); }
+  .sa7 .corner-glow {
+    position: absolute; bottom: 0; right: 0;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle at bottom right, rgba(42,191,191,0.12) 0%, transparent 60%);
+  }
+  .sa7 .inner {
+    position: absolute; inset: 0;
+    padding: 44px 44px 40px;
+    display: flex; flex-direction: column;
+  }
+  .sa7 .tag {
+    font-size: 9px; font-weight: 800; letter-spacing: 5px;
+    color: var(--teal); text-transform: uppercase; margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .sa7 .tag::after {
+    content: ''; display: block; flex: 1; height: 1px;
+    background: rgba(42,191,191,0.3);
+  }
+  .sa7 .headline {
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
+    line-height: 0.93; color: var(--offwhite); letter-spacing: 1px; margin-bottom: 24px;
+  }
+  .sa7 .headline em { color: var(--teal); font-style: normal; }
+  .sa7 .stats { display: flex; gap: 24px; margin-bottom: 20px; }
+  .sa7 .stat-item { display: flex; flex-direction: column; gap: 4px; }
+  .sa7 .stat-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 44px;
+    color: var(--gold); line-height: 1;
+  }
+  .sa7 .stat-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 2px;
+    color: rgba(240,238,232,0.4); text-transform: uppercase; line-height: 1.4;
+  }
+  .sa7 .body {
+    font-size: 12px; color: rgba(240,238,232,0.5); line-height: 1.7;
+    margin-top: auto;
+  }
+
+  /* --- Slide A.8 CTA --- */
+  .sa8 { background: var(--black); }
+  .sa8 .border {
+    position: absolute; inset: 22px;
+    border: 1px solid rgba(201,168,76,0.25); pointer-events: none;
+  }
+  .sa8 .glow {
+    position: absolute; width: 360px; height: 360px;
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .sa8 .inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 50px;
+  }
+  .sa8 .coming {
+    font-size: 10px; font-weight: 700; letter-spacing: 6px;
+    color: var(--teal); text-transform: uppercase; margin-bottom: 20px;
+  }
+  .sa8 .big-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px; line-height: 0.92; letter-spacing: 3px; color: var(--offwhite);
+  }
+  .sa8 .big-text .gold-block { display: block; color: var(--gold); }
+  .sa8 .line-divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 24px 0 20px;
+  }
+  .sa8 .cta-text {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 15px; color: rgba(240,238,232,0.6); line-height: 1.6; margin-bottom: 28px;
+  }
+  .sa8 .cta-row { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .sa8 .cta-button {
+    font-size: 10px; font-weight: 800; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--black);
+    background: var(--gold); padding: 12px 28px;
+  }
+  .sa8 .cta-secondary {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    color: var(--teal); text-transform: uppercase;
+  }
+  .sa8 .logo-bottom {
+    position: absolute; bottom: 36px; left: 0; right: 0;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 11px;
+    letter-spacing: 5px; color: rgba(201,168,76,0.4);
+  }
+
+  /* ===================================================
+     POST B — WED JUN 4
+     "WHY COACHES LOSE 40% OF CLIENTS IN 90 DAYS"
+     8-Slide Carousel · Education / Pain
+  =================================================== */
+
+  /* --- Slide B.1 Cover --- */
+  .sb1 { background: var(--black); }
+  .sb1 .diagonal-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(145deg, rgba(201,168,76,0.06) 0%, transparent 50%, rgba(42,191,191,0.04) 100%);
+  }
+  .sb1 .top-row {
+    position: absolute; top: 32px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .sb1 .brand-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 4px;
+    color: var(--gold); text-transform: uppercase;
+  }
+  .sb1 .pagination { display: flex; gap: 5px; }
+  .sb1 .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+  .sb1 .dot.on { background: var(--gold); }
+  .sb1 .center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 44px;
+  }
+  .sb1 .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 6px;
+    color: var(--teal); text-transform: uppercase; margin-bottom: 26px;
+  }
+  .sb1 .headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 66px; line-height: 0.92; letter-spacing: 2px; color: var(--offwhite);
+  }
+  .sb1 .headline .big-pct { display: block; font-size: 110px; color: var(--gold); line-height: 0.88; }
+  .sb1 .sub {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 15px; color: rgba(240,238,232,0.5);
+    margin-top: 22px; letter-spacing: 1px;
+  }
+  .sb1 .bottom {
+    position: absolute; bottom: 32px; left: 32px; right: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .sb1 .logo-text {
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+    letter-spacing: 4px; color: var(--gold-soft);
+  }
+  .sb1 .date-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px;
+    color: var(--teal); text-transform: uppercase;
+    border: 1px solid rgba(42,191,191,0.4); padding: 5px 10px;
+  }
+
+  /* --- Slide B.2 Story Setup --- */
+  .sb2 { background: var(--charcoal); }
+  .sb2 .gold-bar {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .sb2 .inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 44px;
+  }
+  .sb2 .tag {
+    font-size: 9px; font-weight: 800; letter-spacing: 5px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .sb2 .tag::after {
+    content: ''; display: block; flex: 1; height: 1px;
+    background: rgba(201,168,76,0.3);
+  }
+  .sb2 .headline {
+    font-family: 'Bebas Neue', sans-serif; font-size: 58px;
+    line-height: 0.93; color: var(--offwhite); letter-spacing: 1px; margin-bottom: 24px;
+  }
+  .sb2 .headline em { color: var(--gold); font-style: normal; }
+  .sb2 .body {
+    font-size: 13px; color: rgba(240,238,232,0.55); line-height: 1.75;
+  }
+
+  /* --- Slide B.3–B.6 Reason Slides --- */
+  .reason { background: var(--black); }
+  .reason .corner-accent {
+    position: absolute; top: 0; right: 0;
+    width: 70px; height: 70px;
+    background: linear-gradient(135deg, transparent 50%, rgba(201,168,76,0.12) 50%);
+  }
+  .reason .big-number {
+    position: absolute; top: -20px; right: 24px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 220px;
+    color: rgba(255,255,255,0.025); line-height: 1; pointer-events: none; letter-spacing: -8px;
+  }
+  .reason .inner {
+    position: absolute; inset: 0; padding: 40px;
+    display: flex; flex-direction: column;
+  }
+  .reason .num-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+  }
+  .reason .num-text {
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+    letter-spacing: 4px; color: var(--gold);
+  }
+  .reason .num-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent); opacity: 0.6;
+  }
+  .reason .headline {
+    font-family: 'Bebas Neue', sans-serif; font-size: 52px;
+    line-height: 0.95; color: var(--offwhite); letter-spacing: 1px; margin-bottom: 22px;
+  }
+  .reason .headline em { color: var(--gold); font-style: normal; }
+  .reason .body {
+    font-size: 12px; color: rgba(240,238,232,0.55); line-height: 1.75;
+    margin-top: auto; margin-bottom: 14px;
+  }
+  .reason .solution {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    color: var(--teal); text-transform: uppercase;
+    border-top: 1px solid rgba(42,191,191,0.25); padding-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* --- Slide B.7 Solution Preview --- */
+  .sb7 { background: var(--charcoal); }
+  .sb7 .teal-glow {
+    position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle at top right, rgba(42,191,191,0.12) 0%, transparent 60%);
+  }
+  .sb7 .inner {
+    position: absolute; inset: 0;
+    padding: 44px 44px 40px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .sb7 .eyebrow {
+    font-size: 9px; font-weight: 700; letter-spacing: 5px;
+    color: var(--teal); text-transform: uppercase; margin-bottom: 20px;
+  }
+  .sb7 .headline {
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
+    line-height: 0.93; color: var(--offwhite); letter-spacing: 1px; margin-bottom: 24px;
+  }
+  .sb7 .headline em { color: var(--gold); font-style: normal; }
+  .sb7 .features { display: flex; flex-direction: column; gap: 10px; }
+  .sb7 .feat-row {
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .sb7 .feat-bullet {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 5px;
+  }
+  .sb7 .feat-text {
+    font-size: 12px; color: rgba(240,238,232,0.6); line-height: 1.5;
+  }
+  .sb7 .bottom-tag {
+    margin-top: 20px;
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase;
+    border-top: 1px solid rgba(201,168,76,0.2); padding-top: 14px;
+  }
+
+  /* --- Slide B.8 CTA --- */
+  .sb8 { background: var(--black); }
+  .sb8 .teal-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--teal), transparent);
+  }
+  .sb8 .glow {
+    position: absolute; width: 350px; height: 350px;
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .sb8 .inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 44px;
+  }
+  .sb8 .logo { font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: 6px; color: rgba(201,168,76,0.5); margin-bottom: 26px; }
+  .sb8 .big-text {
+    font-family: 'Bebas Neue', sans-serif; font-size: 62px; line-height: 0.92; letter-spacing: 2px; color: var(--offwhite);
+  }
+  .sb8 .big-text .gold-block { display: block; color: var(--gold); }
+  .sb8 .italic {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 15px; color: rgba(240,238,232,0.5); line-height: 1.5; margin: 22px 0 28px;
+  }
+  .sb8 .button { font-size: 10px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 12px 30px; }
+  .sb8 .handle { position: absolute; bottom: 28px; left: 0; right: 0; text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 4px; color: var(--teal); text-transform: uppercase; }
+
+  /* ===================================================
+     POST C — FRI JUN 6
+     "15 DAYS. THEN EVERYTHING CHANGES."
+     Single Static · Countdown
+  =================================================== */
+
+  .sc1 { background: var(--black); }
+  .sc1 .bg-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(145deg, rgba(201,168,76,0.07) 0%, transparent 50%, rgba(42,191,191,0.05) 100%);
+  }
+  .sc1 .corner-tl {
+    position: absolute; top: 0; left: 0;
+    width: 60px; height: 60px;
+    border-top: 2px solid rgba(201,168,76,0.4);
+    border-left: 2px solid rgba(201,168,76,0.4);
+  }
+  .sc1 .corner-br {
+    position: absolute; bottom: 0; right: 0;
+    width: 60px; height: 60px;
+    border-bottom: 2px solid rgba(201,168,76,0.4);
+    border-right: 2px solid rgba(201,168,76,0.4);
+  }
+  .sc1 .inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 44px;
+  }
+  .sc1 .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 7px;
+    color: var(--teal); text-transform: uppercase; margin-bottom: 20px;
+  }
+  .sc1 .counter-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 160px; color: var(--gold); line-height: 0.85; letter-spacing: 4px;
+  }
+  .sc1 .counter-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 10px; color: var(--offwhite); margin-top: 8px;
+  }
+  .sc1 .divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 24px 0;
+  }
+  .sc1 .sub-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 2px; color: var(--offwhite); line-height: 1.1; margin-bottom: 14px;
+  }
+  .sc1 .sub-headline em { color: var(--gold); font-style: normal; }
+  .sc1 .body {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 14px; color: rgba(240,238,232,0.5); line-height: 1.65;
+  }
+  .sc1 .logo-bottom {
+    position: absolute; bottom: 28px; left: 0; right: 0; text-align: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 11px;
+    letter-spacing: 5px; color: rgba(201,168,76,0.4);
+  }
+
+  /* ============== CAPTIONS ============== */
+  .caption {
+    width: 100%; max-width: 600px;
+    background: var(--charcoal);
+    border: 1px solid rgba(201,168,76,0.18);
+    padding: 32px 36px; border-radius: 2px;
+  }
+  .caption.linkedin { border-color: rgba(42,191,191,0.25); }
+  .caption-label {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; padding-bottom: 14px;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .caption-label .tag-text {
+    font-size: 9px; font-weight: 700; letter-spacing: 3px; color: var(--teal); text-transform: uppercase;
+  }
+  .caption.linkedin .caption-label .tag-text { color: var(--gold); }
+  .caption-label .platform {
+    font-size: 8px; font-weight: 700; letter-spacing: 2px; padding: 3px 8px;
+    text-transform: uppercase; background: rgba(201,168,76,0.12); color: var(--gold);
+  }
+  .caption.linkedin .caption-label .platform {
+    background: rgba(42,191,191,0.12); color: var(--teal);
+  }
+  .caption-text {
+    font-size: 13px; color: var(--offwhite); line-height: 1.85; font-weight: 400;
+  }
+  .caption-text strong { color: var(--gold); font-weight: 700; }
+  .caption-text p { margin-bottom: 14px; }
+  .caption-text p:last-child { margin-bottom: 0; }
+  .hashtags {
+    margin-top: 18px; padding-top: 16px;
+    border-top: 1px solid rgba(42,191,191,0.15);
+    font-size: 12px; color: rgba(42,191,191,0.75); line-height: 1.8; font-weight: 500;
+  }
+
+  /* ============== UTILITIES ============== */
+  .section-break {
+    width: 100%; max-width: 900px;
+    display: flex; align-items: center; gap: 20px; margin: 20px 0;
+  }
+  .section-break .line { flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
+  .section-break .text {
+    font-family: 'Bebas Neue', sans-serif; font-size: 12px;
+    letter-spacing: 6px; color: rgba(201,168,76,0.5);
+  }
+
+  @media (max-width: 480px) {
+    .slide { width: 360px; height: 360px; }
+    .slides-grid { grid-template-columns: 360px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="kicker">Week 2 · Countdown Campaign</div>
+  <h1>PEAK PERFORMANCE</h1>
+</div>
+
+<!-- ====================== POST A ====================== -->
+<div class="post-section">
+  <div class="post-meta">
+    <div class="post-num">Post 04 · Mon Jun 2 · Instagram + TikTok</div>
+    <div class="post-title">ONE DASHBOARD. EVERY CLIENT. ZERO CHAOS.</div>
+    <div class="post-desc">Feature Reveal #1 · 8-Slide Carousel</div>
+  </div>
+
+  <div class="slides-grid">
+
+    <!-- A.1 Cover -->
+    <div class="slide sa1">
+      <div class="grain"></div>
+      <div class="gold-glow"></div>
+      <div class="vignette"></div>
+      <div class="top-row">
+        <span class="brand-tag">Peak Performance</span>
+        <div class="pagination">
+          <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+      <div class="center">
+        <div class="eyebrow">Feature Reveal · #1</div>
+        <div class="headline">
+          ONE<br>
+          <span class="gold-word">DASHBOARD</span>
+          EVERY<br>CLIENT
+        </div>
+        <div class="sub">Your entire coaching business. One screen.</div>
+      </div>
+      <div class="bottom">
+        <span class="logo-text">PEAK PERFORMANCE</span>
+        <span class="date-tag">Jun 2</span>
+      </div>
+    </div>
+
+    <!-- A.2 Problem Setup -->
+    <div class="slide sa2">
+      <div class="grain"></div>
+      <div class="huge-num">6</div>
+      <div class="content">
+        <div class="tag-line">Right Now · Your Business</div>
+        <div class="headline">YOU'RE RUNNING YOUR<br><em>ENTIRE BUSINESS</em><br>ACROSS 6 APPS</div>
+        <div class="apps">
+          <span class="app-pill strike">WhatsApp</span>
+          <span class="app-pill strike">Google Sheets</span>
+          <span class="app-pill strike">Stripe</span>
+          <span class="app-pill strike">Notion</span>
+          <span class="app-pill strike">MyFitnessPal</span>
+          <span class="app-pill strike">Calendly</span>
+        </div>
+        <div class="end-line">One platform fixes all of this. June 15.</div>
+      </div>
+    </div>
+
+    <!-- A.3 Feature: Command Centre -->
+    <div class="slide feature-slide">
+      <div class="teal-bar"></div>
+      <div class="grain"></div>
+      <div class="big-number">1</div>
+      <div class="inner">
+        <div class="num-row">
+          <span class="num-text">FEATURE 01</span>
+          <span class="num-line"></span>
+        </div>
+        <div class="headline">YOUR <em>COMMAND</em><br>CENTRE</div>
+        <div class="body">Every client, every metric, every conversation — one screen. See who needs attention before they have to ask. No more context-switching between apps.</div>
+        <div class="tag-bottom">Full client overview · Real-time status</div>
+      </div>
+    </div>
+
+    <!-- A.4 Feature: Client Management -->
+    <div class="slide feature-slide">
+      <div class="teal-bar"></div>
+      <div class="grain"></div>
+      <div class="big-number">2</div>
+      <div class="inner">
+        <div class="num-row">
+          <span class="num-text">FEATURE 02</span>
+          <span class="num-line"></span>
+        </div>
+        <div class="headline">EVERY CLIENT.<br><em>ALWAYS</em><br>VISIBLE.</div>
+        <div class="body">Active clients, programs, check-ins, payments, progress — no spreadsheet. No WhatsApp scroll. Just complete clarity on every client, every day.</div>
+        <div class="tag-bottom">Client profiles · Check-in history · Progress photos</div>
+      </div>
+    </div>
+
+    <!-- A.5 Feature: Workout Delivery -->
+    <div class="slide feature-slide">
+      <div class="teal-bar"></div>
+      <div class="grain"></div>
+      <div class="big-number">3</div>
+      <div class="inner">
+        <div class="num-row">
+          <span class="num-text">FEATURE 03</span>
+          <span class="num-line"></span>
+        </div>
+        <div class="headline">YOUR <em>PROGRAMS.</em><br>DELIVERED<br>PERFECTLY.</div>
+        <div class="body">Build custom workouts, deliver via the app, track completion in real-time. Your methodology. Your brand. Your clients see exactly what you built for them.</div>
+        <div class="tag-bottom">Workout builder · 3,000+ exercise library · Completion tracking</div>
+      </div>
+    </div>
+
+    <!-- A.6 Feature: Payments -->
+    <div class="slide feature-slide">
+      <div class="teal-bar"></div>
+      <div class="grain"></div>
+      <div class="big-number">4</div>
+      <div class="inner">
+        <div class="num-row">
+          <span class="num-text">FEATURE 04</span>
+          <span class="num-line"></span>
+        </div>
+        <div class="headline">GET PAID.<br><em>AUTOMATICALLY.</em></div>
+        <div class="body">Stripe-powered billing built right in. Recurring subscriptions. One-time packages. Late payment reminders — automated. Never chase an invoice again. Premium coaches shouldn't have to beg.</div>
+        <div class="tag-bottom">Stripe integration · Auto-billing · No awkward money conversations</div>
+      </div>
+    </div>
+
+    <!-- A.7 Feature: Analytics -->
+    <div class="slide sa7">
+      <div class="grain"></div>
+      <div class="corner-glow"></div>
+      <div class="inner">
+        <div class="tag">Feature 05</div>
+        <div class="headline">SEE WHAT'S<br>WORKING.<br><em>KNOW</em> WHO'S<br>AT RISK.</div>
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-num">40%</div>
+            <div class="stat-label">Client churn<br>prevented</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">20h</div>
+            <div class="stat-label">Admin hours<br>saved / week</div>
+          </div>
+        </div>
+        <div class="body">Retention risk signals. Engagement scores. Revenue forecasting. Know which clients are about to leave before they do.</div>
+      </div>
+    </div>
+
+    <!-- A.8 CTA -->
+    <div class="slide sa8">
+      <div class="grain"></div>
+      <div class="glow"></div>
+      <div class="border"></div>
+      <div class="inner">
+        <div class="coming">One Platform. Everything.</div>
+        <div class="big-text">
+          JUNE
+          <span class="gold-block">15</span>
+        </div>
+        <div class="line-divider"></div>
+        <div class="cta-text">Built by coaches who lived<br>the chaos. Built to end it.</div>
+        <div class="cta-row">
+          <div class="cta-button">Join the Waitlist</div>
+          <div class="cta-secondary">Comment COACH for early access</div>
+        </div>
+      </div>
+      <div class="logo-bottom">PEAK PERFORMANCE</div>
+    </div>
+
+  </div>
+
+  <!-- POST A CAPTION -->
+  <div class="caption">
+    <div class="caption-label">
+      <span class="tag-text">Caption · Post 04 · Jun 2</span>
+      <span class="platform">Instagram</span>
+    </div>
+    <div class="caption-text">
+      <p><strong>Your coaching business is running across 6 different apps. That changes on June 15. 🏆</strong></p>
+      <p>WhatsApp for check-ins. Google Sheets for tracking. Stripe for billing. Notion for plans. MyFitnessPal for nutrition. Calendly for bookings. And somehow you're still expected to have energy left to actually coach.</p>
+      <p>We built Peak Performance to replace all of it. One dashboard. Every client. Zero chaos.</p>
+      <p>Swipe to see what's inside — and join the waitlist in bio before June 15.</p>
+      <p>Comment <strong>COACH</strong> and I'll send you early access details directly. 🏆</p>
+    </div>
+    <div class="hashtags">
+      #PeakPerformance #PPCoach #DubaiPT #UAECoach #DubaiFitness #PersonalTrainer #CoachingBusiness #FitnessEntrepreneur #OnlineCoaching #FitnessApp #CoachingPlatform #FitnessTech #PTBusiness #DubaiPersonalTrainer #TrainSmarterMoveBetter
+    </div>
+  </div>
+
+  <div class="caption linkedin">
+    <div class="caption-label">
+      <span class="tag-text">Ron's Post · Jun 2</span>
+      <span class="platform">LinkedIn</span>
+    </div>
+    <div class="caption-text">
+      <p><strong>I used to open 6 different apps every morning before I could see how my clients were doing.</strong></p>
+      <p>WhatsApp to check if anyone messaged overnight. Google Sheets to update progress. Stripe to check if payments had cleared. Notion to see what programs were due. MyFitnessPal to review nutrition logs. And somehow still find time to actually coach.</p>
+      <p>Sound familiar?</p>
+      <p>That's the problem we built Peak Performance to solve. One dashboard. Every client. Every metric. Zero context-switching.</p>
+      <p>We launch June 15 — 13 days from now.</p>
+      <p><strong>If you're a UAE personal trainer or online coach, this is built for you. Comment "INTERESTED" and I'll add you to the early access list personally.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="section-break"><div class="line"></div><div class="text">POST 05</div><div class="line"></div></div>
+
+<!-- ====================== POST B ====================== -->
+<div class="post-section">
+  <div class="post-meta">
+    <div class="post-num">Post 05 · Wed Jun 4 · Instagram</div>
+    <div class="post-title">WHY COACHES LOSE 40% OF CLIENTS IN 90 DAYS</div>
+    <div class="post-desc">8-Slide Educational Carousel · Authority Content</div>
+  </div>
+
+  <div class="slides-grid">
+
+    <!-- B.1 Cover -->
+    <div class="slide sb1">
+      <div class="grain"></div>
+      <div class="diagonal-bg"></div>
+      <div class="vignette"></div>
+      <div class="top-row">
+        <span class="brand-tag">Peak Performance</span>
+        <div class="pagination">
+          <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+      <div class="center">
+        <div class="eyebrow">The 90-Day Problem</div>
+        <div class="headline">
+          COACHES LOSE
+          <span class="big-pct">40%</span>
+          OF CLIENTS IN 90 DAYS
+        </div>
+        <div class="sub">And none of it is about fitness.</div>
+      </div>
+      <div class="bottom">
+        <span class="logo-text">PEAK PERFORMANCE</span>
+        <span class="date-tag">Jun 4</span>
+      </div>
+    </div>
+
+    <!-- B.2 Story Setup -->
+    <div class="slide sb2">
+      <div class="grain"></div>
+      <div class="gold-bar"></div>
+      <div class="inner">
+        <div class="tag">No Product Pitch · Just Truth</div>
+        <div class="headline">YOU GOT THEM<br><em>RESULTS</em> IN<br>MONTH ONE.</div>
+        <div class="body">You gave everything. You were available. They were progressing. Then month three came — they went quiet, then they went. This isn't your coaching. This is your system. Swipe to see why — and how to fix it.</div>
+      </div>
+    </div>
+
+    <!-- B.3 Reason 1 -->
+    <div class="slide reason">
+      <div class="corner-accent"></div>
+      <div class="grain"></div>
+      <div class="big-number">1</div>
+      <div class="inner">
+        <div class="num-row">
+          <span class="num-text">REASON 01</span>
+          <span class="num-line"></span>
+        </div>
+        <div class="headline">NO STRUCTURED<br><em>CHECK-IN</em> SYSTEM</div>
+        <div class="body">Clients lose momentum when they feel unseen. If check-ins live in a WhatsApp thread, they feel optional. Sporadic. A burden. Coaches who retain clients have a weekly rhythm clients can't skip — not a DM they can ignore.</div>
+        <div class="solution">Fix: Automated weekly check-ins with built-in accountability</div>
+      </div>
+    </div>
+
+    <!-- B.4 Reason 2 -->
+    <div class="slide reason">
+      <div class="corner-accent"></div>
+      <div class="grain"></div>
+      <div class="big-number">2</div>
+      <div class="inner">
+        <div class="num-row">
+          <span class="num-text">REASON 02</span>
+          <span class="num-line"></span>
+        </div>
+        <div class="headline">RESULTS PLATEAU.<br>MOTIVATION<br><em>DISAPPEARS.</em></div>
+        <div class="body">Weeks 1–4 are easy. The client is motivated, results come fast. Weeks 5–12 are different — they require a completely different coaching approach. Most coaches don't have a system that recognises the shift and adjusts.</div>
+        <div class="solution">Fix: Phase-based programming that adapts to client progress milestones</div>
+      </div>
+    </div>
+
+    <!-- B.5 Reason 3 -->
+    <div class="slide reason">
+      <div class="corner-accent"></div>
+      <div class="grain"></div>
+      <div class="big-number">3</div>
+      <div class="inner">
+        <div class="num-row">
+          <span class="num-text">REASON 03</span>
+          <span class="num-line"></span>
+        </div>
+        <div class="headline">COMMUNICATION<br>FEELS LIKE<br><em>A BURDEN</em></div>
+        <div class="body">When your check-ins live in WhatsApp, they feel optional. When they live in an app with completion tracking, habit scores, and a coach waiting — they feel essential. The medium shapes the behaviour. Always.</div>
+        <div class="solution">Fix: In-app messaging that creates professional coach–client structure</div>
+      </div>
+    </div>
+
+    <!-- B.6 Reason 4 -->
+    <div class="slide reason">
+      <div class="corner-accent"></div>
+      <div class="grain"></div>
+      <div class="big-number">4</div>
+      <div class="inner">
+        <div class="num-row">
+          <span class="num-text">REASON 04</span>
+          <span class="num-line"></span>
+        </div>
+        <div class="headline">CLIENTS CAN'T<br>SEE THEIR OWN<br><em>PROGRESS</em></div>
+        <div class="body">Progress photos buried in a WhatsApp conversation. Metrics in a spreadsheet they never open. Body comp numbers they forgot you took. Clients who can't see their progress don't feel their progress — and they leave.</div>
+        <div class="solution">Fix: Visual transformation tracking clients can see anytime, anywhere</div>
+      </div>
+    </div>
+
+    <!-- B.7 Solution Preview -->
+    <div class="slide sb7">
+      <div class="grain"></div>
+      <div class="teal-glow"></div>
+      <div class="inner">
+        <div class="eyebrow">Peak Performance Solves All 4</div>
+        <div class="headline">THE SYSTEM<br><em>THAT ENDS</em><br>THE CHURN</div>
+        <div class="features">
+          <div class="feat-row"><div class="feat-bullet"></div><div class="feat-text">Automated weekly check-ins with habit tracking</div></div>
+          <div class="feat-row"><div class="feat-bullet"></div><div class="feat-text">Visual transformation tracking — photos, metrics, progress charts</div></div>
+          <div class="feat-row"><div class="feat-bullet"></div><div class="feat-text">Retention risk alerts — know who's about to leave before they do</div></div>
+          <div class="feat-row"><div class="feat-bullet"></div><div class="feat-text">Structured in-app communication, not WhatsApp chaos</div></div>
+        </div>
+        <div class="bottom-tag">All inside one platform · June 15</div>
+      </div>
+    </div>
+
+    <!-- B.8 CTA -->
+    <div class="slide sb8">
+      <div class="grain"></div>
+      <div class="teal-bar"></div>
+      <div class="glow"></div>
+      <div class="inner">
+        <div class="logo">PEAK PERFORMANCE</div>
+        <div class="big-text">
+          STOP LOSING
+          <span class="gold-block">CLIENTS.</span>
+        </div>
+        <div class="italic">The system to retain 90% of your clients<br>launches June 15 in the UAE.</div>
+        <div class="button">Save This For Your PT Business</div>
+      </div>
+      <div class="handle">@peakperformance</div>
+    </div>
+
+  </div>
+
+  <!-- POST B CAPTION -->
+  <div class="caption">
+    <div class="caption-label">
+      <span class="tag-text">Caption · Post 05 · Jun 4</span>
+      <span class="platform">Instagram</span>
+    </div>
+    <div class="caption-text">
+      <p><strong>The data says 40% of PT clients leave within 90 days. It's not your coaching. It's the system. 🏆</strong></p>
+      <p>We talked to coaches across Dubai and Abu Dhabi. The same four patterns kept coming up — and none of them were about fitness ability.</p>
+      <p>Swipe to see all 4 reasons — and the fix for each one.</p>
+      <p><strong>Save this post</strong> if you're building your PT business in the UAE. And comment your biggest client retention challenge below — I read every one.</p>
+      <p>Peak Performance launches June 15. Built to solve exactly this.</p>
+    </div>
+    <div class="hashtags">
+      #PeakPerformance #PPCoach #DubaiPT #UAECoach #ClientRetention #CoachingBusiness #PersonalTrainer #PTBusiness #DubaiFitness #FitnessEntrepreneur #OnlineCoaching #CoachingTips #PTLife #DubaiPersonalTrainer #ScaleYourCoaching
+    </div>
+  </div>
+</div>
+
+<div class="section-break"><div class="line"></div><div class="text">POST 06</div><div class="line"></div></div>
+
+<!-- ====================== POST C ====================== -->
+<div class="post-section">
+  <div class="post-meta">
+    <div class="post-num">Post 06 · Fri Jun 6 · Instagram + Facebook + LinkedIn</div>
+    <div class="post-title">15 DAYS UNTIL WE CHANGE HOW UAE COACHES DO BUSINESS</div>
+    <div class="post-desc">Single Static · Countdown Graphic</div>
+  </div>
+
+  <div class="slides-grid">
+    <div class="slide sc1">
+      <div class="grain"></div>
+      <div class="bg-gradient"></div>
+      <div class="vignette"></div>
+      <div class="corner-tl"></div>
+      <div class="corner-br"></div>
+      <div class="inner">
+        <div class="eyebrow">UAE Fitness Coaches</div>
+        <div class="counter-num">15</div>
+        <div class="counter-label">DAYS TO GO</div>
+        <div class="divider"></div>
+        <div class="sub-headline">THE PLATFORM<br>UAE COACHES<br><em>HAVE BEEN WAITING FOR</em></div>
+        <div class="body">Built by coaches. For coaches. Zero compromise.<br>Launching June 15, 2026.</div>
+      </div>
+      <div class="logo-bottom">PEAK PERFORMANCE · JUNE 15</div>
+    </div>
+  </div>
+
+  <!-- POST C INSTAGRAM CAPTION -->
+  <div class="caption">
+    <div class="caption-label">
+      <span class="tag-text">Caption · Post 06 · Jun 6</span>
+      <span class="platform">Instagram</span>
+    </div>
+    <div class="caption-text">
+      <p><strong>15 days. Then everything changes for UAE coaches. 🏆</strong></p>
+      <p>We've spent 18 months talking to PTs across Dubai and Abu Dhabi, building what they actually need — not what looked good on a pitch deck.</p>
+      <p>One platform. Every client. Automated billing. Check-ins that run themselves. Nutrition and habit tracking. Retention tools that work. White-glove onboarding by a real human.</p>
+      <p>And it starts on <strong>June 15.</strong></p>
+      <p>If you haven't joined the waitlist yet — link in bio. First 100 coaches get 30 days completely free. No credit card required.</p>
+      <p>Tag a UAE coach who needs to see this. 🏆</p>
+    </div>
+    <div class="hashtags">
+      #PeakPerformance #PPCoach #DubaiPT #UAECoach #DubaiFitness #PersonalTrainer #CoachingBusiness #FitnessEntrepreneur #OnlineCoaching #FitnessApp #CoachingPlatform #PTBusiness #DubaiPersonalTrainer #TrainSmarterMoveBetter #FitnessUAE
+    </div>
+  </div>
+
+  <!-- POST C LINKEDIN CAPTION -->
+  <div class="caption linkedin">
+    <div class="caption-label">
+      <span class="tag-text">Ron's Post · Jun 6</span>
+      <span class="platform">LinkedIn</span>
+    </div>
+    <div class="caption-text">
+      <p><strong>15 days until we launch Peak Performance to every personal trainer and online coach in the UAE.</strong></p>
+      <p>Nicole and I have been asked the same question a lot over the past 18 months: "Why are you building this here, instead of going to London or New York or Silicon Valley?"</p>
+      <p>The answer is simple. The UAE is where the problem lives. Dubai's PT market is one of the fastest-growing in the world — and it's completely underserved by every coaching platform that exists.</p>
+      <p>5,500+ PT academy graduates in the UAE. A fitness industry growing at 18% annually. And zero platforms built specifically for this market, this culture, and these coaches.</p>
+      <p>We're changing that. June 15.</p>
+      <p><strong>If you're a fitness professional in the UAE, Dubai, or Abu Dhabi — I'd love to hear what tools you're currently using to run your coaching business. Drop them in the comments.</strong></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
