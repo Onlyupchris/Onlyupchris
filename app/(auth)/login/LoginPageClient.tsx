@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { createClient } from '@/lib/supabase/client'
-import { RivoniaLogo } from '@/components/brand/RivoniaLogo'
+import { ParticleLogo } from '@/components/brand/ParticleLogo'
 import { Eye, EyeOff, ArrowRight, Loader2 } from 'lucide-react'
 
 export default function LoginPage() {
@@ -37,8 +37,10 @@ export default function LoginPage() {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="w-full max-w-md"
     >
-      <div className="flex justify-center mb-8 lg:hidden">
-        <RivoniaLogo size="md" />
+      <div className="flex justify-center mb-6 lg:hidden">
+        <div className="w-[200px] h-[200px]">
+          <ParticleLogo />
+        </div>
       </div>
 
       <div className="glass rounded-2xl p-8 glow-teal">
