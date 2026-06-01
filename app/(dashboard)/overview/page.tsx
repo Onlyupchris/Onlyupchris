@@ -127,15 +127,15 @@ export default async function OverviewPage() {
 
       {/* Stats row */}
       {(agreements?.length ?? 0) > 0 && (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-2">
           {[
-            { label: 'Total Agreements', value: agreements?.length ?? 0 },
+            { label: 'Total', value: agreements?.length ?? 0 },
             { label: 'Signed', value: signedAgreements },
-            { label: 'Awaiting Signature', value: (agreements?.filter(a => a.status === 'sent').length ?? 0) },
+            { label: 'Awaiting', value: (agreements?.filter(a => a.status === 'sent').length ?? 0) },
           ].map(stat => (
-            <div key={stat.label} className="glass rounded-xl px-5 py-4 text-center">
-              <p className="text-2xl font-light text-white mb-1">{stat.value}</p>
-              <p className="text-white/30 text-xs uppercase tracking-widest">{stat.label}</p>
+            <div key={stat.label} className="glass rounded-xl px-3 py-4 text-center">
+              <p className="text-xl font-light text-white mb-1">{stat.value}</p>
+              <p className="text-white/30 text-[10px] uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </div>

@@ -133,39 +133,64 @@ export function CRMClient({ initialClients, initialDeals, userId }: Props) {
           <button onClick={() => setShowAdd(true)} className="mt-4 text-[#4DD9D9] text-sm hover:text-[#7BE8E8] transition-colors">+ Add your first client</button>
         </div>
       ) : view === 'list' ? (
-        <div className="glass rounded-2xl overflow-hidden">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-white/5">
-                {['Client', 'Status', 'Monthly Value', 'Start Date', 'Contact'].map(h => (
-                  <th key={h} className="text-left px-5 py-3 text-xs text-white/30 uppercase tracking-widest font-normal">{h}</th>
+        <>
+          {/* Mobile cards — small screens only */}
+          <div className="md:hidden space-y-2">
+            {filtered.map((client, i) => (
+              <motion.div key={client.id} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
+                className="glass rounded-xl p-4">
+                <div className="flex items-start justify-between mb-2">
+                  <div className="flex-1 min-w-0 mr-2">
+                    <p className="text-white/80 text-sm font-light">{client.name}</p>
+                    {client.company && <p className="text-white/30 text-xs">{client.company}</p>}
+                  </div>
+                  <StatusBadge status={client.status} />
+                </div>
+                <div className="flex items-center justify-between mt-2">
+                  <p className="text-[#4DD9D9] text-sm font-light">{client.monthly_value > 0 ? `R${client.monthly_value.toLocaleString()}/mo` : '—'}</p>
+                  <div className="flex gap-3">
+                    {client.email && <a href={`mailto:${client.email}`} className="text-white/40 hover:text-[#4DD9D9] transition-colors"><Mail size={15} /></a>}
+                    {client.phone && <a href={`tel:${client.phone}`} className="text-white/40 hover:text-[#4DD9D9] transition-colors"><Phone size={15} /></a>}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          {/* Desktop table */}
+          <div className="hidden md:block glass rounded-2xl overflow-hidden">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-white/5">
+                  {['Client', 'Status', 'Monthly Value', 'Start Date', 'Contact'].map(h => (
+                    <th key={h} className="text-left px-5 py-3 text-xs text-white/30 uppercase tracking-widest font-normal">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((client, i) => (
+                  <motion.tr key={client.id} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
+                    className="border-b border-white/5 last:border-0 hover:bg-white/3 transition-colors group">
+                    <td className="px-5 py-4">
+                      <div>
+                        <p className="text-white/80 text-sm font-light">{client.name}</p>
+                        {client.company && <p className="text-white/30 text-xs">{client.company}</p>}
+                      </div>
+                    </td>
+                    <td className="px-5 py-4"><StatusBadge status={client.status} /></td>
+                    <td className="px-5 py-4 text-[#4DD9D9] text-sm font-light">{client.monthly_value > 0 ? `R${client.monthly_value.toLocaleString()}` : '—'}</td>
+                    <td className="px-5 py-4 text-white/30 text-xs">{client.start_date ? new Date(client.start_date).toLocaleDateString('en-ZA') : '—'}</td>
+                    <td className="px-5 py-4">
+                      <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        {client.email && <a href={`mailto:${client.email}`} className="text-white/30 hover:text-[#4DD9D9] transition-colors"><Mail size={14} /></a>}
+                        {client.phone && <a href={`tel:${client.phone}`} className="text-white/30 hover:text-[#4DD9D9] transition-colors"><Phone size={14} /></a>}
+                      </div>
+                    </td>
+                  </motion.tr>
                 ))}
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((client, i) => (
-                <motion.tr key={client.id} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
-                  className="border-b border-white/5 last:border-0 hover:bg-white/3 transition-colors group">
-                  <td className="px-5 py-4">
-                    <div>
-                      <p className="text-white/80 text-sm font-light">{client.name}</p>
-                      {client.company && <p className="text-white/30 text-xs">{client.company}</p>}
-                    </div>
-                  </td>
-                  <td className="px-5 py-4"><StatusBadge status={client.status} /></td>
-                  <td className="px-5 py-4 text-[#4DD9D9] text-sm font-light">{client.monthly_value > 0 ? `R${client.monthly_value.toLocaleString()}` : '—'}</td>
-                  <td className="px-5 py-4 text-white/30 text-xs">{client.start_date ? new Date(client.start_date).toLocaleDateString('en-ZA') : '—'}</td>
-                  <td className="px-5 py-4">
-                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      {client.email && <a href={`mailto:${client.email}`} className="text-white/30 hover:text-[#4DD9D9] transition-colors"><Mail size={14} /></a>}
-                      {client.phone && <a href={`tel:${client.phone}`} className="text-white/30 hover:text-[#4DD9D9] transition-colors"><Phone size={14} /></a>}
-                    </div>
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </tbody>
+            </table>
+          </div>
+        </>
       ) : (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {CLIENT_STATUSES.map(stage => {

@@ -67,7 +67,7 @@ function CreateAgreementModal({ userId, clients, onClose, onCreated }: {
             <input required value={title} onChange={e => setTitle(e.target.value)} placeholder="Social Media Retainer — Client Name"
               className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-white text-sm placeholder-white/20 focus:outline-none focus:border-[#4DD9D9]/50 transition-all" />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="text-xs text-white/40 tracking-widest uppercase block mb-1.5">Client</label>
               <select value={clientId} onChange={e => setClientId(e.target.value)}
@@ -194,7 +194,7 @@ export function AgreementsClient({ initialAgreements, clients, userId }: Props) 
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
           { label: 'Total', value: counts.total, color: '#ffffff' },
           { label: 'Draft', value: counts.draft, color: '#A0A0A0' },

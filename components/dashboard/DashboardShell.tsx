@@ -15,7 +15,7 @@ export function DashboardShell({
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   return (
-    <div className="flex h-screen bg-[#0A0A0A] overflow-hidden">
+    <div className="flex h-[100dvh] bg-[#0A0A0A] overflow-hidden">
       {/* Desktop sidebar — hidden on mobile */}
       <div className="hidden md:flex">
         <Sidebar profile={profile} />

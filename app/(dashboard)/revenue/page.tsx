@@ -78,7 +78,7 @@ export default async function RevenuePage() {
       </div>
 
       {/* Summary stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {[
           { label: 'Current MRR', value: `R${currentMRR.toLocaleString()}`, color: '#4DD9D9' },
           { label: 'MoM Growth', value: `${growth >= 0 ? '+' : ''}${growth.toFixed(1)}%`, color: growth >= 0 ? '#34D399' : '#F87171' },
@@ -134,9 +134,9 @@ export default async function RevenuePage() {
       {/* Scale to Next Level */}
       <div>
         <h3 className="text-white/60 text-xs tracking-widest uppercase mb-3">Scale to Next Level</h3>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {projections.map((proj, i) => (
-            <div key={i} className="glass-teal rounded-xl p-5 text-center">
+            <div key={i} className="glass-teal rounded-xl p-4 sm:p-5 flex sm:block items-center justify-between sm:text-center gap-4">
               <p className="text-white/30 text-xs mb-2">+{proj.clients - clientCount} client{proj.clients - clientCount > 1 ? 's' : ''}</p>
               <p className="text-2xl font-light text-[#4DD9D9] mb-1">R{(proj.mrr / 1000).toFixed(0)}K</p>
               <p className="text-white/20 text-xs">monthly</p>

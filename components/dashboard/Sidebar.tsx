@@ -47,7 +47,7 @@ export function Sidebar({ profile, onClose }: { profile: Profile | null; onClose
     <motion.aside
       animate={{ width: collapsed && !isMobile ? 64 : 240 }}
       transition={{ duration: 0.25, ease: 'easeInOut' }}
-      className="flex flex-col h-screen bg-[#0D0D0D] border-r border-white/5 overflow-hidden flex-shrink-0"
+      className="flex flex-col h-[100dvh] bg-[#0D0D0D] border-r border-white/5 overflow-hidden flex-shrink-0"
     >
       {/* Logo row */}
       <div className="flex items-center justify-between px-4 h-14 md:h-16 border-b border-white/5 flex-shrink-0">
